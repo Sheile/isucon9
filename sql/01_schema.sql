@@ -42,6 +42,11 @@ CREATE TABLE `seat_master` (
   `seat_row` int(11) NOT NULL,
   `seat_class` enum('premium', 'reserved', 'non-reserved') NOT NULL,
   `is_smoking_seat` tinyint(1) NOT NULL
+  INDEX idx_train_class (train_class),
+  INDEX idx_car_number (car_number),
+  INDEX idx_seat_class (seat_class),
+  INDEX idx_seat_row (seat_row),
+  INDEX idx_is_smoking_seat (is_smoking_seat)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 DROP TABLE IF EXISTS `seat_reservations`;
