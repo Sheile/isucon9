@@ -206,21 +206,19 @@ def get_available_seats_from_train(c, train, from_station, to_station, seat_clas
             available_set_map["{}_{}_{}".format(seat["car_number"], seat["seat_row"], seat["seat_column"])] = seat
 
         sql = """SELECT sr.reservation_id, sr.car_number, sr.seat_row, sr.seat_column
-        FROM seat_reservations sr, reservations r, seat_master s, station_master std, station_master sta
+        FROM seat_reservations sr, reservations r, seat_master s
         WHERE
             r.reservation_id=sr.reservation_id AND
             s.train_class=r.train_class AND
             s.car_number=sr.car_number AND
             s.seat_column=sr.seat_column AND
-            s.seat_row=sr.seat_row AND
-            std.name=r.departure AND
-            sta.name=r.arrival
+            s.seat_row=sr.seat_row
         """
 
         if train["is_nobori"]:
-            sql += " AND ((sta.id < %s AND %s <= std.id) OR (sta.id < %s AND %s <= std.id) OR (%s < sta.id AND std.id < %s))"
+            sql += " AND ((r.arrival_id < %s AND %s <= r.departure_id) OR (r.arrival_id < %s AND %s <= r.departure_id) OR (%s < r.arrival_id AND r.departure_id < %s))"
         else:
-            sql += " AND ((std.id <= %s AND %s < sta.id) OR (std.id <= %s AND %s < sta.id) OR (sta.id < %s AND %s < std.id))"
+            sql += " AND ((r.departure_id <= %s AND %s < r.arrival_id) OR (r.departure_id <= %s AND %s < r.arrival_id) OR (r.arrival_id < %s AND %s < r.departure_id))"
 
         c.execute(sql, (from_station["id"], from_station["id"], to_station["id"], to_station["id"], from_station["id"], to_station["id"]))
         seat_reservation_list = c.fetchall()
@@ -942,7 +940,8 @@ def post_reserve():
 
 
             # 予約ID発行と予約情報登録
-            sql = "INSERT INTO `reservations` (`user_id`, `date`, `train_class`, `train_name`, `departure`, `arrival`, `status`, `payment_id`, `adult`, `child`, `amount`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+            sql = "INSERT INTO `reservations` (`user_id`, `date`, `train_class`, `train_name`, `departure_id`, `departure`, `arrival_id`, `arrival`, `status`, `payment_id`, `adult`, `child`, `amount`) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+
             c.execute(
                 sql,
                 (
@@ -950,7 +949,9 @@ def post_reserve():
                     str(date),
                     train_class,
                     train_name,
+                    from_station['id'],
                     departure_name,
+                    to_station['id'],
                     arrival_name,
                     "requesting",
                     "a",
