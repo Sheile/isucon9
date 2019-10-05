@@ -647,21 +647,9 @@ def get_train_seats():
 
 
             # 各号車の情報
-            i = 1
-            while True:
-                sql = "SELECT * FROM seat_master WHERE train_class=%s AND car_number=%s ORDER BY seat_row, seat_column LIMIT 1"
-                c.execute(sql, (train_class, i))
-                seat = c.fetchone()
-                if not seat:
-                    break
-
-                car_list.append({
-                    "car_number": i,
-                    "seat_class": seat["seat_class"],
-                })
-
-                i+=1
-
+            sql = 'SELECT DISTINCT car_number, seat_class FROM seat_master WHERE train_class=%s ORDER BY car_number'
+            c.execute(sql, (train_class,))
+            car_list = c.fetchall()
     except MySQLdb.Error as err:
         app.logger.exception(err)
         raise HttpException(requests.codes['internal_server_error'], "db error")
