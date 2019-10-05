@@ -64,7 +64,7 @@ def get_user():
                 raise HttpException(requests.codes['unauthorized'], "user not found")
     except MySQLdb.Error as err:
         app.logger.exception(err)
-        http_json_error(requests.codes['internal_server_error'], "db error")
+        raise HttpException(requests.codes['internal_server_error'], "db error")
     return user
 
 
@@ -550,7 +550,7 @@ def get_train_seats():
                 )
 
                 seat_roweservation_list = c.fetchall()
-                for seat_roweservation in seat_roweservation_list:
+                for seat_reservation in seat_roweservation_list:
                     sql = "SELECT * FROM reservations WHERE reservation_id=%s"
                     c.execute(sql, (seat_reservation["reservation_id"],))
                     reservation = c.fetchone()
