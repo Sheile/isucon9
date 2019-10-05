@@ -19,6 +19,92 @@ SessionName   = "session_isutrain"
 
 TrainClassMap = {"express": "最速", "semi_express": "中間", "local": "遅いやつ"}
 
+StationMaster = {
+    '東京': {'id': 1, 'distance': 0, 'is_stop_express': True, 'is_stop_semi_express': True, 'is_stop_local': True, 'name': '東京'},
+    '古岡': {'id':  2, 'distance': 12.745608, 'is_stop_express': False, 'is_stop_semi_express': True, 'is_stop_local': True, 'name': '古岡'},
+    '絵寒町': {'id':  3, 'distance': 32.107649, 'is_stop_express': False, 'is_stop_semi_express': False, 'is_stop_local': True, 'name': '絵寒町'},
+    '沙芦公園': {'id':  4, 'distance': 45.037138, 'is_stop_express': False, 'is_stop_semi_express': False, 'is_stop_local': True, 'name': '沙芦公園'},
+    '形顔': {'id':  5, 'distance': 52.773422, 'is_stop_express': False, 'is_stop_semi_express': True, 'is_stop_local': True, 'name': '形顔'},
+    '油交': {'id':  6, 'distance': 60.930427, 'is_stop_express': True, 'is_stop_semi_express': True, 'is_stop_local': True, 'name': '油交'},
+    '通墨山': {'id':  7, 'distance': 72.915666, 'is_stop_express': False, 'is_stop_semi_express': False, 'is_stop_local': True, 'name': '通墨山'},
+    '初野': {'id':  8, 'distance': 80.517696, 'is_stop_express': False, 'is_stop_semi_express': True, 'is_stop_local': True, 'name': '初野'},
+    '樺威学園': {'id':  9, 'distance': 96.053004, 'is_stop_express': False, 'is_stop_semi_express': True, 'is_stop_local': True, 'name': '樺威学園'},
+    '塩鮫公園': {'id': 10, 'distance': 112.665386, 'is_stop_express': False, 'is_stop_semi_express': True, 'is_stop_local': True, 'name': '塩鮫公園'},
+    '山田': {'id': 11, 'distance': 119.444708, 'is_stop_express': False, 'is_stop_semi_express': False, 'is_stop_local': True, 'name': '山田'},
+    '表岡': {'id': 12, 'distance': 131.462232, 'is_stop_express': False, 'is_stop_semi_express': False, 'is_stop_local': True, 'name': '表岡'},
+    '並取': {'id': 13, 'distance': 149.826976, 'is_stop_express': False, 'is_stop_semi_express': False, 'is_stop_local': True, 'name': '並取'},
+    '細野': {'id': 14, 'distance': 166.909255, 'is_stop_express': False, 'is_stop_semi_express': False, 'is_stop_local': True, 'name': '細野'},
+    '住郷': {'id': 15, 'distance': 182.323457, 'is_stop_express': False, 'is_stop_semi_express': False, 'is_stop_local': True, 'name': '住郷'},
+    '管英': {'id': 16, 'distance': 188.887999, 'is_stop_express': False, 'is_stop_semi_express': False, 'is_stop_local': True, 'name': '管英'},
+    '気川': {'id': 17, 'distance': 207.599747, 'is_stop_express': False, 'is_stop_semi_express': True, 'is_stop_local': True, 'name': '気川'},
+    '桐飛': {'id': 18, 'distance': 217.900353, 'is_stop_express': False, 'is_stop_semi_express': False, 'is_stop_local': True, 'name': '桐飛'},
+    '樫曲町': {'id': 19, 'distance': 229.697609, 'is_stop_express': False, 'is_stop_semi_express': False, 'is_stop_local': True, 'name': '樫曲町'},
+    '依酒山': {'id': 20, 'distance': 244.77017, 'is_stop_express': False, 'is_stop_semi_express': False, 'is_stop_local': True, 'name': '依酒山'},
+    '堀切町': {'id': 21, 'distance': 251.94859, 'is_stop_express': False, 'is_stop_semi_express': False, 'is_stop_local': True, 'name': '堀切町'},
+    '葉千': {'id': 22, 'distance': 269.00928, 'is_stop_express': False, 'is_stop_semi_express': False, 'is_stop_local': True, 'name': '葉千'},
+    '奥山': {'id': 23, 'distance': 275.384825, 'is_stop_express': False, 'is_stop_semi_express': False, 'is_stop_local': True, 'name': '奥山'},
+    '鯉秋寺': {'id': 24, 'distance': 284.952294, 'is_stop_express': False, 'is_stop_semi_express': False, 'is_stop_local': True, 'name': '鯉秋寺'},
+    '伍出': {'id': 25, 'distance': 291.499545, 'is_stop_express': False, 'is_stop_semi_express': False, 'is_stop_local': True, 'name': '伍出'},
+    '杏高公園': {'id': 26, 'distance': 310.086023, 'is_stop_express': False, 'is_stop_semi_express': False, 'is_stop_local': True, 'name': '杏高公園'},
+    '荒川': {'id': 27, 'distance': 325.553902, 'is_stop_express': True, 'is_stop_semi_express': True, 'is_stop_local': True, 'name': '荒川'},
+    '磯川': {'id': 28, 'distance': 334.561908, 'is_stop_express': False, 'is_stop_semi_express': False, 'is_stop_local': True, 'name': '磯川'},
+    '茶川': {'id': 29, 'distance': 343.842013, 'is_stop_express': False, 'is_stop_semi_express': True, 'is_stop_local': True, 'name': '茶川'},
+    '八実学園': {'id': 30, 'distance': 355.192588, 'is_stop_express': False, 'is_stop_semi_express': True, 'is_stop_local': True, 'name': '八実学園'},
+    '梓金': {'id': 31, 'distance': 374.584703, 'is_stop_express': False, 'is_stop_semi_express': True, 'is_stop_local': True, 'name': '梓金'},
+    '鯉田': {'id': 32, 'distance': 381.847874, 'is_stop_express': False, 'is_stop_semi_express': True, 'is_stop_local': True, 'name': '鯉田'},
+    '鳴門': {'id': 33, 'distance': 393.244289, 'is_stop_express': False, 'is_stop_semi_express': False, 'is_stop_local': True, 'name': '鳴門'},
+    '曲徳町': {'id': 34, 'distance': 411.802367, 'is_stop_express': False, 'is_stop_semi_express': False, 'is_stop_local': True, 'name': '曲徳町'},
+    '彩岬山': {'id': 35, 'distance': 420.375925, 'is_stop_express': False, 'is_stop_semi_express': False, 'is_stop_local': True, 'name': '彩岬山'},
+    '根永': {'id': 36, 'distance': 428.829478, 'is_stop_express': False, 'is_stop_semi_express': True, 'is_stop_local': True, 'name': '根永'},
+    '鹿近川': {'id': 37, 'distance': 445.676144, 'is_stop_express': False, 'is_stop_semi_express': False, 'is_stop_local': True, 'name': '鹿近川'},
+    '結広': {'id': 38, 'distance': 457.246917, 'is_stop_express': False, 'is_stop_semi_express': True, 'is_stop_local': True, 'name': '結広'},
+    '庵金公園': {'id': 39, 'distance': 474.044387, 'is_stop_express': False, 'is_stop_semi_express': True, 'is_stop_local': True, 'name': '庵金公園'},
+    '近岡': {'id': 40, 'distance': 487.270404, 'is_stop_express': False, 'is_stop_semi_express': False, 'is_stop_local': True, 'name': '近岡'},
+    '威香': {'id': 41, 'distance': 504.16358, 'is_stop_express': False, 'is_stop_semi_express': False, 'is_stop_local': True, 'name': '威香'},
+    '名古屋': {'id': 42, 'distance': 519.612391, 'is_stop_express': True, 'is_stop_semi_express': True, 'is_stop_local': True, 'name': '名古屋'},
+    '錦太学園': {'id': 43, 'distance': 531.408202, 'is_stop_express': False, 'is_stop_semi_express': False, 'is_stop_local': True, 'name': '錦太学園'},
+    '和錦台': {'id': 44, 'distance': 548.584849, 'is_stop_express': False, 'is_stop_semi_express': False, 'is_stop_local': True, 'name': '和錦台'},
+    '稲冬台': {'id': 45, 'distance': 554.215596, 'is_stop_express': False, 'is_stop_semi_express': False, 'is_stop_local': True, 'name': '稲冬台'},
+    '松港山': {'id': 46, 'distance': 572.885503, 'is_stop_express': False, 'is_stop_semi_express': False, 'is_stop_local': True, 'name': '松港山'},
+    '甘桜': {'id': 47, 'distance': 584.344724, 'is_stop_express': False, 'is_stop_semi_express': False, 'is_stop_local': True, 'name': '甘桜'},
+    '根左海岸': {'id': 48, 'distance': 603.713433, 'is_stop_express': False, 'is_stop_semi_express': False, 'is_stop_local': True, 'name': '根左海岸'},
+    '島威寺': {'id': 49, 'distance': 614.711098, 'is_stop_express': False, 'is_stop_semi_express': False, 'is_stop_local': True, 'name': '島威寺'},
+    '月朱野': {'id': 50, 'distance': 633.406177, 'is_stop_express': False, 'is_stop_semi_express': False, 'is_stop_local': True, 'name': '月朱野'},
+    '芋呉川': {'id': 51, 'distance': 640.097895, 'is_stop_express': False, 'is_stop_semi_express': True, 'is_stop_local': True, 'name': '芋呉川'},
+    '木南': {'id': 52, 'distance': 657.573946, 'is_stop_express': False, 'is_stop_semi_express': False, 'is_stop_local': True, 'name': '木南'},
+    '鳩平ヶ丘': {'id': 53, 'distance': 677.211495, 'is_stop_express': False, 'is_stop_semi_express': False, 'is_stop_local': True, 'name': '鳩平ヶ丘'},
+    '維荻学園': {'id': 54, 'distance': 689.581633, 'is_stop_express': False, 'is_stop_semi_express': False, 'is_stop_local': True, 'name': '維荻学園'},
+    '保池': {'id': 55, 'distance': 696.405431, 'is_stop_express': False, 'is_stop_semi_express': True, 'is_stop_local': True, 'name': '保池'},
+    '九野': {'id': 56, 'distance': 711.087956, 'is_stop_express': False, 'is_stop_semi_express': True, 'is_stop_local': True, 'name': '九野'},
+    '桜田': {'id': 57, 'distance': 728.268005, 'is_stop_express': False, 'is_stop_semi_express': False, 'is_stop_local': True, 'name': '桜田'},
+    '霞苑野': {'id': 58, 'distance': 735.983348, 'is_stop_express': False, 'is_stop_semi_express': True, 'is_stop_local': True, 'name': '霞苑野'},
+    '夷太寺': {'id': 59, 'distance': 744.58156, 'is_stop_express': False, 'is_stop_semi_express': False, 'is_stop_local': True, 'name': '夷太寺'},
+    '甘野': {'id': 60, 'distance': 751.340202, 'is_stop_express': False, 'is_stop_semi_express': False, 'is_stop_local': True, 'name': '甘野'},
+    '遠山': {'id': 61, 'distance': 770.125141, 'is_stop_express': False, 'is_stop_semi_express': True, 'is_stop_local': True, 'name': '遠山'},
+    '銀正': {'id': 62, 'distance': 788.163214, 'is_stop_express': False, 'is_stop_semi_express': False, 'is_stop_local': True, 'name': '銀正'},
+    '末国': {'id': 63, 'distance': 799.939778, 'is_stop_express': False, 'is_stop_semi_express': False, 'is_stop_local': True, 'name': '末国'},
+    '泉別川': {'id': 64, 'distance': 807.476895, 'is_stop_express': False, 'is_stop_semi_express': True, 'is_stop_local': True, 'name': '泉別川'},
+    '京都': {'id': 65, 'distance': 819.772794, 'is_stop_express': True, 'is_stop_semi_express': True, 'is_stop_local': True, 'name': '京都'},
+    '桜内': {'id': 66, 'distance': 833.349255, 'is_stop_express': False, 'is_stop_semi_express': True, 'is_stop_local': True, 'name': '桜内'},
+    '荻葛ヶ丘': {'id': 67, 'distance': 839.29845, 'is_stop_express': False, 'is_stop_semi_express': True, 'is_stop_local': True, 'name': '荻葛ヶ丘'},
+    '雨墨': {'id': 68, 'distance': 853.080719, 'is_stop_express': False, 'is_stop_semi_express': True, 'is_stop_local': True, 'name': '雨墨'},
+    '桂綾寺': {'id': 69, 'distance': 863.842723, 'is_stop_express': False, 'is_stop_semi_express': True, 'is_stop_local': True, 'name': '桂綾寺'},
+    '宇治': {'id': 70, 'distance': 869.266132, 'is_stop_express': True, 'is_stop_semi_express': True, 'is_stop_local': True, 'name': '宇治'},
+    '塚手海岸': {'id': 71, 'distance': 878.247393, 'is_stop_express': False, 'is_stop_semi_express': True, 'is_stop_local': True, 'name': '塚手海岸'},
+    '垣通海岸': {'id': 72, 'distance': 893.724394, 'is_stop_express': False, 'is_stop_semi_express': False, 'is_stop_local': True, 'name': '垣通海岸'},
+    '雨稲ヶ丘': {'id': 73, 'distance': 900.098745, 'is_stop_express': False, 'is_stop_semi_express': True, 'is_stop_local': True, 'name': '雨稲ヶ丘'},
+    '森果川': {'id': 74, 'distance': 909.518544, 'is_stop_express': True, 'is_stop_semi_express': True, 'is_stop_local': True, 'name': '森果川'},
+    '舟田': {'id': 75, 'distance': 919.249073, 'is_stop_express': False, 'is_stop_semi_express': False, 'is_stop_local': True, 'name': '舟田'},
+    '形利': {'id': 76, 'distance': 938.540025, 'is_stop_express': False, 'is_stop_semi_express': False, 'is_stop_local': True, 'name': '形利'},
+    '午万台': {'id': 77, 'distance': 954.151248, 'is_stop_express': False, 'is_stop_semi_express': False, 'is_stop_local': True, 'name': '午万台'},
+    '早森野': {'id': 78, 'distance': 966.498192, 'is_stop_express': False, 'is_stop_semi_express': False, 'is_stop_local': True, 'name': '早森野'},
+    '桐氷野': {'id': 79, 'distance': 975.568259, 'is_stop_express': False, 'is_stop_semi_express': True, 'is_stop_local': True, 'name': '桐氷野'},
+    '条川': {'id': 80, 'distance': 990.339004, 'is_stop_express': True, 'is_stop_semi_express': True, 'is_stop_local': True, 'name': '条川'},
+    '菊岡': {'id': 81, 'distance': 1005.597665, 'is_stop_express': False, 'is_stop_semi_express': True, 'is_stop_local': True, 'name': '菊岡'},
+    '大阪': {'id': 82, 'distance': 1024.983484, 'is_stop_express': True, 'is_stop_semi_express': True, 'is_stop_local': True, 'name': '大阪'},
+}
+
+
 
 class HttpException(Exception):
     status_code = 500
@@ -292,15 +378,12 @@ def get_train_search():
     try:
         conn = dbh()
         with conn.cursor() as c:
-            sql = "SELECT * FROM station_master WHERE name=%s"
-            c.execute(sql, (from_name, ))
-            from_station = c.fetchone()
+            from_station = StationMaster.get(from_name)
             if not from_station:
                 raise HttpException(requests.codes['bad_request'], "fromStation: no rows")
 
 
-            c.execute(sql, (to_name, ))
-            to_station = c.fetchone()
+            to_station = StationMaster.get(to_name)
             if not to_station:
                 raise HttpException(requests.codes['bad_request'], "toStation: no rows")
 
@@ -499,15 +582,12 @@ def get_train_seats():
                 raise HttpException(requests.codes['not_found'], "列車が存在しません")
 
 
-            sql = "SELECT * FROM station_master WHERE name=%s"
-            c.execute(sql, (from_name, ))
-            from_station = c.fetchone()
+            from_station = StationMaster.get(from_name)
             if not from_station:
                 raise HttpException(requests.codes['bad_request'], "fromStation: no rows")
 
 
-            c.execute(sql, (to_name, ))
-            to_station = c.fetchone()
+            to_station = StationMaster.get(to_name)
             if not to_station:
                 raise HttpException(requests.codes['bad_request'], "toStation: no rows")
 
@@ -555,11 +635,8 @@ def get_train_seats():
                     c.execute(sql, (seat_reservation["reservation_id"],))
                     reservation = c.fetchone()
 
-                    sql  = "SELECT * FROM station_master WHERE name=%s"
-                    c.execute(sql, (reservation["departure"],))
-                    departure_station = c.fetchone()
-                    c.execute(sql, (reservation["arrival"],))
-                    arrival_station = c.fetchone()
+                    departure_station = StationMaster.get(reservation["departure"])
+                    arrival_station = StationMaster.get(reservation["arrival"])
 
                     if train["is_nobori"]:
                         if to_station["id"] < arrival_station["id"] and from_station["id"] <= arrival_station["id"]:
@@ -649,25 +726,19 @@ def post_reserve():
                 raise HttpException(requests.codes['not_found'], "列車が存在しません")
 
 
-            sql = "SELECT * FROM station_master WHERE name=%s"
-            c.execute(sql, (train["start_station"], ))
-            start_station = c.fetchone()
+            start_station = StationMaster.get(train["start_station"])
             if not start_station:
                 raise HttpException(requests.codes['not_found'], "リクエストされた列車の始発駅データがみつかりません")
 
-            c.execute(sql, (train["last_station"], ))
-            last_station = c.fetchone()
+            last_station = StationMaster.get(train["last_station"])
             if not last_station:
                 raise HttpException(requests.codes['not_found'], "リクエストされた列車の終着駅データがみつかりません")
 
-
-            c.execute(sql, (departure_name, ))
-            from_station = c.fetchone()
+            from_station = StationMaster.get(departure_name)
             if not from_station:
                 raise HttpException(requests.codes['not_found'], "リクエストされた乗車駅データがみつかりません")
 
-            c.execute(sql, (arrival_name, ))
-            to_station = c.fetchone()
+            to_station = StationMaster.get(arrival_name)
             if not to_station:
                 raise HttpException(requests.codes['not_found'], "リクエストされた降車駅データがみつかりません")
 
@@ -714,11 +785,8 @@ def post_reserve():
                             if not reservation:
                                 raise HttpException(requests.codes['bad_request'], "reservationが見つかりません")
 
-                            sql = "SELECT * FROM station_master WHERE name=%s"
-                            c.execute(sql, (reservation["departure"],))
-                            departure_station = c.fetchone()
-                            c.execute(sql, (reservation["arrival"],))
-                            arrival_station = c.fetchone()
+                            departure_station = StationMaster.get(reservation["departure"])
+                            arrival_station = StationMaster.get(reservation["arrival"])
 
                             if train["is_nobori"]:
                                 if to_station["id"] < arrival_station["id"] and from_station["id"] <= arrival_station["id"]:
@@ -815,14 +883,11 @@ def post_reserve():
 
 
                 # 予約情報の乗車区間の駅IDを求める
-                sql = "SELECT * FROM station_master WHERE name=%s"
-                c.execute(sql, (reservation["departure"],))
-                reservedfromStation = c.fetchone()
+                reservedfromStation = StationMaster.get(reservation["departure"])
                 if not reservedfromStation:
                     raise HttpException(requests.codes['internal_server_error'], "予約情報に記載された列車の乗車駅データがみつかりません")
 
-                c.execute(sql, (reservation["arrival"],))
-                reservedtoStation = c.fetchone()
+                reservedtoStation = StationMaster.get(reservation["arrival"])
                 if not reservedtoStation:
                     raise HttpException(requests.codes['internal_server_error'], "予約情報に記載された列車の降車駅データがみつかりません")
 
