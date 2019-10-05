@@ -850,6 +850,10 @@ def post_reserve():
                     raise HttpException(requests.codes['not_found'], "リクエストされた座席情報は存在しません。号車・喫煙席・座席クラスなど組み合わせを見直してください")
 
 
+            # 安全のためこの時点でロック
+            sql = "LOCK TABLES reservations WRITE, seat_reservations WRITE, distance_fare_master READ, fare_master READ, users READ"
+            c.execute(sql)
+
             # 当該列車・列車名の予約一覧取得
             sql = "SELECT * FROM reservations WHERE date=%s AND train_class=%s AND train_name=%s FOR UPDATE"
             c.execute(sql, (str(date), train_class, train_name))
