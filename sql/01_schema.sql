@@ -44,7 +44,7 @@ CREATE TABLE `seat_master` (
   `seat_column` enum('A', 'B', 'C', 'D', 'E') NOT NULL,
   `seat_row` int(11) NOT NULL,
   `seat_class` enum('premium', 'reserved', 'non-reserved') NOT NULL,
-  `is_smoking_seat` tinyint(1) NOT NULL
+  `is_smoking_seat` tinyint(1) NOT NULL,
   INDEX idx_train_class (train_class),
   INDEX idx_car_number (car_number),
   INDEX idx_seat_class (seat_class),
@@ -57,7 +57,7 @@ CREATE TABLE `seat_reservations` (
   `reservation_id` bigint NOT NULL,
   `car_number` int unsigned NOT NULL,
   `seat_row` int unsigned NOT NULL,
-  `seat_column` varchar(100) NOT NULL
+  `seat_column` varchar(100) NOT NULL,
   INDEX idx_reservation_id (reservation_id),
   INDEX idx_car_number (car_number),
   INDEX idx_seat_row (seat_row),
@@ -82,7 +82,7 @@ CREATE TABLE `train_master` (
   `train_name` varchar(100) NOT NULL,
   `start_station` varchar(100) NOT NULL,
   `last_station` varchar(100) NOT NULL,
-  `is_nobori` tinyint(1) NOT NULL
+  `is_nobori` tinyint(1) NOT NULL,
   INDEX idx_date (date),
   INDEX idx_train_class (train_class),
   INDEX idx_train_name (train_name)
