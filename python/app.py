@@ -590,61 +590,58 @@ def get_train_seats():
             if train["train_class"] not in usable_train_class_list:
                 raise HttpException(requests.codes['bad_request'], "invalid train_class")
 
-            sql = "SELECT * FROM seat_master WHERE train_class=%s AND car_number=%s ORDER BY seat_row, seat_column"
+            sql = """SELECT
+                         seat_row,
+                         seat_column,
+                         seat_class,
+                         is_smoking_seat
+                     FROM seat_master WHERE train_class=%s AND car_number=%s ORDER BY seat_row, seat_column"""
             c.execute(sql, (train_class, car_number))
 
             seat_list = c.fetchall()
 
+
+            # 当該範囲で予約済のシートを取得
+            sql = """
+            SELECT
+                s.seat_row, s.seat_column
+            FROM seat_reservations s, reservations r
+            WHERE
+                s.reservation_id = r.reservation_id AND
+                r.date=%s AND r.train_class=%s AND r.train_name=%s AND car_number=%s
+            """
+            if train['is_nobori']:
+                sql += " AND (%s < r.departure_id AND r.departure_id <= %s OR %s <= r.arrival_id AND r.arrival_id < %s)"
+            else:
+                sql += " AND (%s < r.arrival_id AND r.arrival_id <= %s OR %s <= r.departure_id AND r.departure_id < %s)"
+
+            c.execute(
+                sql,
+                (
+                    str(date),
+                    train_class,
+                    train_name,
+                    car_number,
+                    min(from_station['id'], to_station['id']),
+                    max(from_station['id'], to_station['id']),
+                    min(from_station['id'], to_station['id']),
+                    max(from_station['id'], to_station['id'])
+                )
+            )
+            reservations = c.fetchall()
+            occupied = set()
+            for reservation in reservations:
+                occupied.add(f'{reservation["seat_row"]}-{reservation["seat_column"]}')
+
             for seat in seat_list:
+                key = f'{seat["seat_row"]}-{seat["seat_column"]}'
                 seat = {
                     "row": seat["seat_row"],
                     "column": seat["seat_column"],
                     "class": seat["seat_class"],
                     "is_smoking_seat": True if seat["is_smoking_seat"] else False,
-                    "is_occupied": False,
+                    "is_occupied": key in occupied
                 }
-
-                sql = """
-                SELECT
-                    r.departure as departure,
-                    r.arrival as arrival
-                FROM seat_reservations s, reservations r
-                WHERE
-                    s.reservation_id = r.reservation_id AND
-                    r.date=%s AND r.train_class=%s AND r.train_name=%s AND car_number=%s AND seat_row=%s AND seat_column=%s
-                """
-
-                c.execute(
-                    sql,
-                    (
-                        str(date),
-                        train_class,
-                        train_name,
-                        car_number,
-                        seat["row"],
-                        seat["column"],
-                    )
-                )
-
-                reservations = c.fetchall()
-                for reservation in reservations:
-                    departure_station = StationMaster.get(reservation["departure"])
-                    arrival_station = StationMaster.get(reservation["arrival"])
-
-                    if train["is_nobori"]:
-                        if to_station["id"] < arrival_station["id"] and from_station["id"] <= arrival_station["id"]:
-                            pass
-                        elif to_station["id"] >= departure_station["id"] and from_station["id"] > departure_station["id"]:
-                            pass
-                        else:
-                            seat["is_occupied"] = True
-                    else:
-                        if from_station["id"] < departure_station["id"] and to_station["id"] <= departure_station["id"]:
-                            pass
-                        elif from_station["id"] >= arrival_station["id"] and to_station["id"] > arrival_station["id"]:
-                            pass
-                        else:
-                            seat["is_occupied"] = True
 
                 seat_information_list.append(seat)
 
