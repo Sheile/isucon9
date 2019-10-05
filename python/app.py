@@ -13,6 +13,7 @@ JST = datetime.timezone(datetime.timedelta(hours=+9), 'JST')
 
 app = flask.Flask(__name__)
 app.config['SECRET_KEY'] = 'isutrain'
+app.logger.setLevel(logging.ERROR)
 
 AvailableDays = 10
 SessionName   = "session_isutrain"
