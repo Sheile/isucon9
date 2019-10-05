@@ -205,14 +205,10 @@ def get_available_seats_from_train(c, train, from_station, to_station, seat_clas
         for seat in seat_list:
             available_set_map["{}_{}_{}".format(seat["car_number"], seat["seat_row"], seat["seat_column"])] = seat
 
-        sql = """SELECT sr.reservation_id, sr.car_number, sr.seat_row, sr.seat_column
-        FROM seat_reservations sr, reservations r, seat_master s
+        sql = """SELECT sr.car_number, sr.seat_row, sr.seat_column
+        FROM seat_reservations sr, reservations r
         WHERE
-            r.reservation_id=sr.reservation_id AND
-            s.train_class=r.train_class AND
-            s.car_number=sr.car_number AND
-            s.seat_column=sr.seat_column AND
-            s.seat_row=sr.seat_row
+            r.reservation_id=sr.reservation_id
         """
 
         if train["is_nobori"]:
