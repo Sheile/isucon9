@@ -611,9 +611,12 @@ def get_train_seats():
                 }
 
                 sql = """
-                SELECT s.*
+                SELECT
+                    r.departure as departure,
+                    r.arrival as arrival
                 FROM seat_reservations s, reservations r
                 WHERE
+                    s.reservation_id = r.reservation_id AND
                     r.date=%s AND r.train_class=%s AND r.train_name=%s AND car_number=%s AND seat_row=%s AND seat_column=%s
                 """
 
@@ -629,12 +632,8 @@ def get_train_seats():
                     )
                 )
 
-                seat_roweservation_list = c.fetchall()
-                for seat_reservation in seat_roweservation_list:
-                    sql = "SELECT * FROM reservations WHERE reservation_id=%s"
-                    c.execute(sql, (seat_reservation["reservation_id"],))
-                    reservation = c.fetchone()
-
+                reservations = c.fetchall()
+                for reservation in reservations:
                     departure_station = StationMaster.get(reservation["departure"])
                     arrival_station = StationMaster.get(reservation["arrival"])
 
