@@ -31,7 +31,10 @@ CREATE TABLE `reservations` (
   `child` int NOT NULL,
   `amount` bigint NOT NULL,
   INDEX idx_departure_id (departure_id),
-  INDEX idx_arrival_id (arrival_id)
+  INDEX idx_arrival_id (arrival_id),
+  INDEX idx_train_name (train_name),
+  INDEX idx_train_class (train_class),
+  INDEX idx_date (date)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 DROP TABLE IF EXISTS `seat_master`;
@@ -55,7 +58,10 @@ CREATE TABLE `seat_reservations` (
   `car_number` int unsigned NOT NULL,
   `seat_row` int unsigned NOT NULL,
   `seat_column` varchar(100) NOT NULL
-  INDEX idx_reservation_id (reservation_id)
+  INDEX idx_reservation_id (reservation_id),
+  INDEX idx_car_number (car_number),
+  INDEX idx_seat_row (seat_row),
+  INDEX idx_seat_column (seat_column)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 DROP TABLE IF EXISTS `station_master`;
