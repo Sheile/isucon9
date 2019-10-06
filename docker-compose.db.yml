@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+
+  mysql:
+    image: mysql:8
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    environment:
+      - "TZ=Asia/Tokyo"
+    env_file:
+      - ".env"
+    volumes:
+      - mysql:/var/lib/mysql
+      - ./sql:/docker-entrypoint-initdb.d
+      - ./mysql/conf.d:/etc/mysql/conf.d
+      - /var/log/mysql:/var/log/mysql
+    # development only
+    ports:
+      - "0.0.0.0:3306:3306"
+
+volumes:
+  mysql:
