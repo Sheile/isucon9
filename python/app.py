@@ -237,17 +237,7 @@ def get_distance_fare(c, distance):
     c.execute(sql)
 
     distance_fare_list = c.fetchall()
-
-    lastDistance = 0.0
-    lastFare = 0
-    for distanceFare in distance_fare_list:
-        app.logger.warn("{} {} {}".format(distance, distanceFare["distance"], distanceFare["fare"]))
-        if  lastDistance < distance and distance < distanceFare["distance"]:
-            break
-        lastDistance = distanceFare["distance"]
-        lastFare = distanceFare["fare"]
-
-    return lastFare
+    return distance_fare_list
 
 def calc_fare(c, date, from_station, to_station, train_class, seat_class):
 
